@@ -14,11 +14,16 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
-  if a == b && b == c 
-    :equilateral
-  else
-    a == b || a == c || b == c ? :isosceles : :scalene
+  if a + b > c and a + c > b and b + c > a
+    return :equilateral if a == b && b == c 
+    return :isosceles if a == b || a == c || b == c 
+    return :scalene if a != b && a != c && b != c
+  end
+
+  begin
+    raise TriangleError, "Invalid arguments"
+  rescue TriangleError => exception
+    raise TriangleError, "Invalid arguments"
   end
 end
 
